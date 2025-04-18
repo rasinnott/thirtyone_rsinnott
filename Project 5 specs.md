@@ -2,14 +2,6 @@
 
 Start Assignment
 
-* Due Wednesday by 11pm
-*  
-* Points 10
-*  
-* Submitting a text entry box or a file upload
-*  
-* Available after Feb 17 at 1pm
-
 ### CTIS 310
 
 ### Project 5: Abstract data types
