@@ -1,0 +1,48 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'thirtyone 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'thirtyone 1.0-SNAPSHOT API'
+edu.guilford
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/src/main/java = 1739560030199
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/constant-values.html = 1745011180678
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/tag-search-index.js = 1745011180697
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/overview-tree.html = 1745011180690
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/module-search-index.js = 1745011180696
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/index.html = 1745011180704
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/package-search-index.js = 1745011180696
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/link.svg = 1745011180707
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/index-all.html = 1745011180702
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/allpackages-index.html = 1745011180696
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/member-search-index.js = 1745011180696
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/copy.svg = 1745011180707
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/script.js = 1745011180706
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/stylesheet.css = 1745011180706
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/search-page.js = 1745011180708
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/help-doc.html = 1745011180705
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/element-list = 1745011180672
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/search.html = 1745011180703
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/allclasses-index.html = 1745011180695
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/type-search-index.js = 1745011180696
+/Users/rasinnott/Documents/Current Courses/CTIS 310/310repos/thirtyone_rsinnott/target/reports/apidocs/search.js = 1745011180708
