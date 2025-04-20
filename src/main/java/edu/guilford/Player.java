@@ -126,13 +126,28 @@ public class Player {
     }
 
     /**
-     * This method plays the computer player's turn. It impements some basic descision making methods.  
+     * This method plays the computer player's turn. It impements methods that....  
      */
     public void playComputerTurn() {
         //TODO: implement computer player's turn
     }
-
     
-
+    /**
+     * Determines whether the player should draw from the stockpile or the discard pile.
+     * If the top card of the discard pile matches the suit of any card in the player's hand,
+     * the player will choose to draw from the discard pile. Otherwise, they draw from the stockpile.
+     *
+     * @param discardPile The discard pile to inspect.
+     * @return true if the player should draw from the Discard pile, false if from the stockpile.
+     */
+    public boolean drawChoice(DiscardPile discardPile) {
+        Card topCard = discardPile.peek();
+        for (Card card : hand.getHand()) {
+            if (card.getSuit() == topCard.getSuit()) {
+                return true; // Draw from discard pile
+            }
+        }
+        return false; // Draw from stockpile
+    }
 
 }
