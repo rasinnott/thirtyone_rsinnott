@@ -128,8 +128,17 @@ public class Player {
     /**
      * This method plays the computer player's turn. It impements methods that....  
      */
-    public void playComputerTurn() {
-        //TODO: implement computer player's turn
+    public void autoPlayerTurn(DiscardPile discardPile, Stockpile stockpile) {
+        // Check if player should knock
+        if (!knocked && getTotalValue() >= 27) {
+            knock();
+        } else if (drawChoice(discardPile)) {
+            draw(true, stockpile, discardPile); // Draw from discard pile
+            discard(discardChoice(), true, discardPile, stockpile); // Discard card to either discard pile or stockpile
+        } else {
+            draw(false, stockpile, discardPile); // Draw from stockpile
+            discard(discardChoice(), true, discardPile, stockpile); // Discard card to either discard pile or stockpile
+        }
     }
     
     /**
@@ -173,10 +182,10 @@ public class Player {
      *
      * @return true if the player should knock, false otherwise.
      */
-    public boolean willKnock() {
-        return !knocked && getTotalValue() >= 27;
+    public void willKnock() {
+        if (!knocked && getTotalValue() >= 27) {
+            knock();
+        }
     }
-
-    // TODO: Need to know if any other player has knocked at begining of turn.
 
 }
