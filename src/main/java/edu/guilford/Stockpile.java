@@ -14,6 +14,7 @@ public class Stockpile extends LinkedList<Card> {
      * @param deck The Deck to build the Stockpile from.
      */
     public Stockpile(Deck deck) {
+        
         while (deck.size() > 0) {
             this.add(deck.deal());
         }
