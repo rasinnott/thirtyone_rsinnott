@@ -60,8 +60,8 @@ public class Player {
      * Sets the knocked boolean of the player.
      * @param knocked The knocked boolean of the player.
      */
-    public void knock(boolean knocked) {
-        knocked = true;
+    public void knock() {
+        this.knocked = true;
     }
 
     /**
@@ -69,15 +69,21 @@ public class Player {
      * and adds it to the players hand.
      * 
      * @param stockpile A boolean to represent if the card should be drawn from the stockpile or discard pile.
+     * @param stockpile The stockpile to draw from.
+     * @param discardPile The discard pile to draw from.
      * @return The card drawn from the stockpile or discard pile.
      */
-    public Card draw(boolean drawFromStockpile) {
+    public Card draw(boolean drawFromStockpile, Stockpile stockpile, DiscardPile discardPile) {
         if (drawFromStockpile) {
             //TODO: make sure works with stockpile
             Card card = stockpile.remove();
             hand.addCard(card);
             return card;
-        } 
+        } else {
+            Card card = discardPile.draw();
+            hand.addCard(card);
+            return card;
+        }
     }
 
     /**
@@ -86,10 +92,10 @@ public class Player {
      * 
      * @param The card to be discarded.
      */
-    public void discard(Card card) {
+    public void discard(Card card, DiscardPile discardPile) {
         hand.removeCard(card);
         // TODO: make sure works with discard pile
-        discardPile.push(new Card(rank, suit));
+        discardPile.push(card);
     }
 
     /**
