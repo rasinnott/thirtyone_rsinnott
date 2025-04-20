@@ -22,6 +22,11 @@ public class Player {
     private boolean knocked;
 
     /**
+     * The number of lives a player has.
+     */
+    private int lives;
+
+    /**
      * A default constructor to create a player with a name and an empty hand
      * and knocked set to false..
      * @param name The name of the player.
@@ -30,6 +35,7 @@ public class Player {
         this.name = name;
         this.hand = new Hand();
         this.knocked = false;
+        this.lives = 3;
     }
 
     /**
@@ -38,6 +44,29 @@ public class Player {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Sets the name of the player.
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets the lives of the player.
+     * @return The lives of the player.
+     */
+    public int getLives() {
+        return lives;
+    }
+
+    /**
+     * Player looses one life.
+     */
+    public void loseLife() {
+        lives--;
     }
 
     /**
@@ -130,7 +159,7 @@ public class Player {
      */
     public void autoPlayerTurn(DiscardPile discardPile, Stockpile stockpile) {
         // Check if player should knock
-        if (!knocked && getTotalValue() >= 27) {
+        if (!Game.getGameKnocked() && !knocked && getTotalValue() >= 27) { 
             knock();
         } else if (drawChoice(discardPile)) {
             draw(true, stockpile, discardPile); // Draw from discard pile

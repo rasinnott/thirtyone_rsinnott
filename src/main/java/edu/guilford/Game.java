@@ -39,7 +39,7 @@ public class Game {
      * 
      * @param gameKnocked
      */
-    private boolean gameKnocked;
+    private static boolean gameKnocked;
 
     /**
      * A constructor to create a new game with a specified number of players.
@@ -47,6 +47,8 @@ public class Game {
      * @param numPlayers The number of players in the game.
      */
     public Game(int numPlayers) {
+        // Set gameKnocked to false
+        gameKnocked = false;
         // Build and shuffle Deck
         this.deck = new Deck();
         this.deck.shuffle();
@@ -103,6 +105,26 @@ public class Game {
         }
     }
 
+    /**
+     * Returns the gameKnocked attribute.
+     * 
+     * @return The gameKnocked attribute.
+     */
+    public static boolean getGameKnocked() {
+        return gameKnocked;
+    }
 
-    //TODO: ensure game checks for knocks at the end of player turn.
+    /**
+     * Full player Turn method. (Computer player's turn)
+     * 
+     * @param discardPile The discard pile to inspect.
+     * @param stockpile The stockpile to inspect.
+     */
+    public void playerTurn(DiscardPile discardPile, Stockpile stockpile) {
+        Player player = getCurrentPlayer();
+        player.autoPlayerTurn(discardPile, stockpile);
+        checkKnocked();
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+    }
+
 }
