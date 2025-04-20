@@ -35,6 +35,13 @@ public class Game {
     private int currentPlayerIndex;
 
     /**
+     * An attribute to flag if anyone has knocked.
+     * 
+     * @param gameKnocked
+     */
+    private boolean gameKnocked;
+
+    /**
      * A constructor to create a new game with a specified number of players.
      * 
      * @param numPlayers The number of players in the game.
@@ -66,4 +73,36 @@ public class Game {
 
     }
 
+    /**
+     * Gets the ArrayList of players in the game.
+     * 
+     * @return The ArrayList of players in the game.
+     */
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    /**
+     * Gets the current player in the game.
+     * 
+     * @return The current player in the game.
+     */
+    public Player getCurrentPlayer() {
+        return players.get(currentPlayerIndex);
+    }
+
+    /**
+     * A method that checks if any players have knocked
+     * andsets the gameKnocked attribute to true.
+     */
+    public void checkKnocked() {
+        for (Player player : players) {
+            if (player.getKnocked()) {
+                gameKnocked = true;
+            }
+        }
+    }
+
+
+    //TODO: ensure game checks for knocks at the end of player turn.
 }

@@ -150,4 +150,33 @@ public class Player {
         return false; // Draw from stockpile
     }
 
+    /**
+     * Selects the card with the lowest rank fo discard.
+     * This method is a placeholder for more complex decision making.
+     * Will build out after there is a running version.
+     * 
+     * @return The card to discard.
+     */
+    public Card discardChoice() {
+        Card lowest = hand.getHand().get(0);
+        for (Card card : hand.getHand()) {
+            if (card.compareTo(lowest) < 0) {
+                lowest = card;
+            }
+        }
+        return lowest;
+    }
+
+    /**
+     * Determines whether the player should knock. If the value of the
+     * player's hand is greater than or equal to 27 returns true.
+     *
+     * @return true if the player should knock, false otherwise.
+     */
+    public boolean willKnock() {
+        return !knocked && getTotalValue() >= 27;
+    }
+
+    // TODO: Need to know if any other player has knocked at begining of turn.
+
 }
