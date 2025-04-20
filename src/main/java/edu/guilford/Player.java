@@ -73,8 +73,8 @@ public class Player {
      * @param discardPile The discard pile to draw from.
      * @return The card drawn from the stockpile or discard pile.
      */
-    public Card draw(boolean drawFromStockpile, Stockpile stockpile, DiscardPile discardPile) {
-        if (drawFromStockpile) {
+    public Card draw(boolean fromStockpile, Stockpile stockpile, DiscardPile discardPile) {
+        if (fromStockpile) {
             //TODO: make sure works with stockpile
             Card card = stockpile.remove();
             hand.addCard(card);
@@ -88,14 +88,19 @@ public class Player {
 
     /**
      * Removes a card of specified rank and suit from the player's hand
-     * and places it on the top of the discard pile.
+     * and places it on the top of the discard pile or the bottom of the stockpile.
      * 
-     * @param The card to be discarded.
+     * @param card The card to be discarded.
+     * @param toDiscard A boolean to represent if the card should be discarded or added to the stockpile.
+     * @param discardPile The discard pile to discard from.
+     * @param stockpile The stockpile to add to.
      */
-    public void discard(Card card, DiscardPile discardPile) {
-        hand.removeCard(card);
-        // TODO: make sure works with discard pile
-        discardPile.push(card);
+    public void discard(Card card, boolean toDiscard, DiscardPile discardPile, Stockpile stockpile) {
+        if (toDiscard) {
+            discardPile.push(card);
+        } else {
+            stockpile.push(card);
+        }
     }
 
     /**
@@ -119,5 +124,15 @@ public class Player {
         "Score: " + getTotalValue() +
         "\nHas knocked: " + knocked;
     }
+
+    /**
+     * This method plays the computer player's turn. It impements some basic descision making methods.  
+     */
+    public void playComputerTurn() {
+        //TODO: implement computer player's turn
+    }
+
+    
+
 
 }

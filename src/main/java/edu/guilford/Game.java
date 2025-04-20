@@ -3,7 +3,8 @@ package edu.guilford;
 import java.util.ArrayList;
 
 /**
- * This class represents the game of ThirtyOne. It contains methods to initialize the game, 
+ * This class represents the game of ThirtyOne. It contains methods to
+ * initialize the game,
  * to play the game, and to end the game.
  */
 public class Game {
@@ -35,13 +36,14 @@ public class Game {
 
     /**
      * A constructor to create a new game with a specified number of players.
+     * 
      * @param numPlayers The number of players in the game.
      */
     public Game(int numPlayers) {
         // Build and shuffle Deck
         this.deck = new Deck();
         this.deck.shuffle();
-        
+
         // Create an ArrayList of Players and set the current player index to 0
         this.players = new ArrayList<Player>();
         for (int i = 0; i < numPlayers; i++) {
@@ -62,8 +64,6 @@ public class Game {
         // Construct DiscardPile from Stockpile
         discardPile = new DiscardPile(stockpile);
 
-        
     }
 
 }
-     
