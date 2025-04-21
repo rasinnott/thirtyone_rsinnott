@@ -102,16 +102,14 @@ public class Player {
      * @param discardPile The discard pile to draw from.
      * @return The card drawn from the stockpile or discard pile.
      */
-    public Card draw(boolean fromStockpile, Stockpile stockpile, DiscardPile discardPile) {
+    public void draw(boolean fromStockpile, Stockpile stockpile, DiscardPile discardPile) {
         if (fromStockpile) {
             //TODO: make sure works with stockpile
             Card card = stockpile.remove();
             hand.addCard(card);
-            return card;
         } else {
             Card card = discardPile.draw();
             hand.addCard(card);
-            return card;
         }
     }
 
@@ -127,8 +125,10 @@ public class Player {
     public void discard(Card card, boolean toDiscard, DiscardPile discardPile, Stockpile stockpile) {
         if (toDiscard) {
             discardPile.push(card);
+            hand.removeCard(card);
         } else {
-            stockpile.push(card);
+            stockpile.add(card);
+            hand.removeCard(card);
         }
     }
 
@@ -159,15 +159,16 @@ public class Player {
      */
     public void autoPlayerTurn(DiscardPile discardPile, Stockpile stockpile) {
         // Check if player should knock
-        if (!Game.getGameKnocked() && !knocked && getTotalValue() >= 27) { 
+        if (!Game.getGameKnocked() && !knocked && getTotalValue() >= 27) {
             knock();
+        // Draw from either discard pile or stockpile
         } else if (drawChoice(discardPile)) {
-            draw(true, stockpile, discardPile); // Draw from discard pile
-            discard(discardChoice(), true, discardPile, stockpile); // Discard card to either discard pile or stockpile
+            draw(false, stockpile, discardPile); // Draw from discard pile
         } else {
-            draw(false, stockpile, discardPile); // Draw from stockpile
-            discard(discardChoice(), true, discardPile, stockpile); // Discard card to either discard pile or stockpile
+            draw(true, stockpile, discardPile); // Draw from stockpile
         }
+        // Discard card to either discard pile or stockpile
+        discard(discardChoice(), true, discardPile, stockpile);
     }
     
     /**
@@ -211,10 +212,11 @@ public class Player {
      *
      * @return true if the player should knock, false otherwise.
      */
-    public void willKnock() {
+    // Redundant I think
+   /*  public void willKnock() {
         if (!knocked && getTotalValue() >= 27) {
             knock();
         }
-    }
+    } */
 
 }
