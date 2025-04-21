@@ -103,6 +103,14 @@ public class Player {
     }
 
     /**
+     * Resets the player's hand and knocked boolean.
+     */
+    public void reset() {
+        hand.reset();
+        knocked = false;
+    }
+
+    /**
      * Draws a card from the top of either the stockpile which is a Queue or the
      * discard pile which is a Stack,
      * and adds it to the players hand.
@@ -171,7 +179,8 @@ public class Player {
      */
     public void autoPlayerTurn(DiscardPile discardPile, Stockpile stockpile) {
         // Check if player should knock
-        if (!Game.getGameKnocked() && !knocked && getTotalValue() >= 27) {
+        // Had to lower the threshold to 20 to make it work. The descision logic only let the card total get to 27 about half the time....bad descision making.
+        if (!Game.getGameKnocked() && !knocked && getTotalValue() >= 20) {
             knock();
             return;
         }

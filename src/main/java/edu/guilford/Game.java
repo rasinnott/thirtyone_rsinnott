@@ -183,7 +183,7 @@ public class Game {
         currentPlayerIndex = 0;
         winner = null;
         for (Player player : players) {
-            player.getHand().reset();
+            player.reset();
         }
     }
 
