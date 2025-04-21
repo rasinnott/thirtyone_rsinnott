@@ -182,6 +182,9 @@ public class Game {
         gameOver = false;
         currentPlayerIndex = 0;
         winner = null;
+        for (Player player : players) {
+            player.getHand().reset();
+        }
     }
 
     /**
@@ -263,6 +266,9 @@ public class Game {
         while (!gameKnocked) {
             playerTurn();
             checkKnocked();
+            /* for (Player player : players) {
+                System.out.println(player.getName() + ": " + player.getHand());
+            } */
         }
         displayResults();
     }

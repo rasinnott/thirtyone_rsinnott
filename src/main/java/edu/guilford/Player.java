@@ -1,8 +1,10 @@
 package edu.guilford;
 
 /**
- * This is a class to represent a player of the game. I has attributes for the name of the player,
- * the player's hand, and a boolean to identify if te player has knocked.It contains methods to for the actions a player can take durring the game.
+ * This is a class to represent a player of the game. I has attributes for the
+ * name of the player,
+ * the player's hand, and a boolean to identify if te player has knocked.It
+ * contains methods to for the actions a player can take durring the game.
  */
 public class Player {
 
@@ -29,6 +31,7 @@ public class Player {
     /**
      * A default constructor to create a player with a name and an empty hand
      * and knocked set to false..
+     * 
      * @param name The name of the player.
      */
     public Player(String name) {
@@ -40,6 +43,7 @@ public class Player {
 
     /**
      * Gets the name of the player.
+     * 
      * @return The name of the player.
      */
     public String getName() {
@@ -48,6 +52,7 @@ public class Player {
 
     /**
      * Sets the name of the player.
+     * 
      * @param name
      */
     public void setName(String name) {
@@ -56,6 +61,7 @@ public class Player {
 
     /**
      * Gets the lives of the player.
+     * 
      * @return The lives of the player.
      */
     public int getLives() {
@@ -71,6 +77,7 @@ public class Player {
 
     /**
      * Gets the hand of the player.
+     * 
      * @return The hand of the player.
      */
     public Hand getHand() {
@@ -79,6 +86,7 @@ public class Player {
 
     /**
      * Gets the knocked boolean of the player.
+     * 
      * @return The knocked boolean of the player.
      */
     public boolean getKnocked() {
@@ -87,6 +95,7 @@ public class Player {
 
     /**
      * Sets the knocked boolean of the player.
+     * 
      * @param knocked The knocked boolean of the player.
      */
     public void knock() {
@@ -94,17 +103,19 @@ public class Player {
     }
 
     /**
-     * Draws a card from the top of either the stockpile which is a Queue or the discard pile which is a Stack,
+     * Draws a card from the top of either the stockpile which is a Queue or the
+     * discard pile which is a Stack,
      * and adds it to the players hand.
      * 
-     * @param stockpile A boolean to represent if the card should be drawn from the stockpile or discard pile.
-     * @param stockpile The stockpile to draw from.
+     * @param stockpile   A boolean to represent if the card should be drawn from
+     *                    the stockpile or discard pile.
+     * @param stockpile   The stockpile to draw from.
      * @param discardPile The discard pile to draw from.
      * @return The card drawn from the stockpile or discard pile.
      */
     public void draw(boolean fromStockpile, Stockpile stockpile, DiscardPile discardPile) {
         if (fromStockpile) {
-            //TODO: make sure works with stockpile
+            // TODO: make sure works with stockpile
             Card card = stockpile.remove();
             hand.addCard(card);
         } else {
@@ -117,18 +128,19 @@ public class Player {
      * Removes a card of specified rank and suit from the player's hand
      * and places it on the top of the discard pile or the bottom of the stockpile.
      * 
-     * @param card The card to be discarded.
-     * @param toDiscard A boolean to represent if the card should be discarded or added to the stockpile.
+     * @param card        The card to be discarded.
+     * @param toDiscard   A boolean to represent if the card should be discarded or
+     *                    added to the stockpile.
      * @param discardPile The discard pile to discard from.
-     * @param stockpile The stockpile to add to.
+     * @param stockpile   The stockpile to add to.
      */
     public void discard(Card card, boolean toDiscard, DiscardPile discardPile, Stockpile stockpile) {
         if (toDiscard) {
+            hand.removeCard(card);
             discardPile.push(card);
-            hand.removeCard(card);
         } else {
-            stockpile.add(card);
             hand.removeCard(card);
+            stockpile.add(card);
         }
     }
 
@@ -150,19 +162,21 @@ public class Player {
     @Override
     public String toString() {
         return name + "'s hand: \n" + hand.toString() +
-        "Score: " + getTotalValue() +
-        "\nHas knocked: " + knocked;
+                "Score: " + getTotalValue() +
+                "\nHas knocked: " + knocked;
     }
 
     /**
-     * This method plays the computer player's turn. It impements methods that....  
+     * This method plays the computer player's turn. It impements methods that....
      */
     public void autoPlayerTurn(DiscardPile discardPile, Stockpile stockpile) {
         // Check if player should knock
         if (!Game.getGameKnocked() && !knocked && getTotalValue() >= 27) {
             knock();
+            return;
+        }
         // Draw from either discard pile or stockpile
-        } else if (drawChoice(discardPile)) {
+        if (drawChoice(discardPile)) {
             draw(false, stockpile, discardPile); // Draw from discard pile
         } else {
             draw(true, stockpile, discardPile); // Draw from stockpile
@@ -170,14 +184,18 @@ public class Player {
         // Discard card to either discard pile or stockpile
         discard(discardChoice(), true, discardPile, stockpile);
     }
-    
+
     /**
-     * Determines whether the player should draw from the stockpile or the discard pile.
-     * If the top card of the discard pile matches the suit of any card in the player's hand,
-     * the player will choose to draw from the discard pile. Otherwise, they draw from the stockpile.
+     * Determines whether the player should draw from the stockpile or the discard
+     * pile.
+     * If the top card of the discard pile matches the suit of any card in the
+     * player's hand,
+     * the player will choose to draw from the discard pile. Otherwise, they draw
+     * from the stockpile.
      *
      * @param discardPile The discard pile to inspect.
-     * @return true if the player should draw from the Discard pile, false if from the stockpile.
+     * @return true if the player should draw from the Discard pile, false if from
+     *         the stockpile.
      */
     public boolean drawChoice(DiscardPile discardPile) {
         Card topCard = discardPile.peek();
@@ -190,13 +208,16 @@ public class Player {
     }
 
     /**
-     * Selects the card with the lowest rank fo discard.
+     * Selects the card with the lowest rank to discard.
      * This method is a placeholder for more complex decision making.
-     * Will build out after there is a running version.
-     * 
+     *
      * @return The card to discard.
      */
     public Card discardChoice() {
+        if (hand.getHand().isEmpty()) {
+            return null; // Shouldn't happen in regular gameplay
+        }
+
         Card lowest = hand.getHand().get(0);
         for (Card card : hand.getHand()) {
             if (card.compareTo(lowest) < 0) {
@@ -213,10 +234,12 @@ public class Player {
      * @return true if the player should knock, false otherwise.
      */
     // Redundant I think
-   /*  public void willKnock() {
-        if (!knocked && getTotalValue() >= 27) {
-            knock();
-        }
-    } */
+    /*
+     * public void willKnock() {
+     * if (!knocked && getTotalValue() >= 27) {
+     * knock();
+     * }
+     * }
+     */
 
 }
